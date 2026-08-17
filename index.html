@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portafolio personal de Edson Francisco Lino Aguirre Bravo, estudiante de Ingeniería de Sistemas.">
+  <title>Portafolio — Edson Francisco Lino Aguirre Bravo | Ingeniería de Sistemas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#inicio" class="logo">&lt;/&gt; Edson Aguirre</a>
+      <div class="nav-derecha">
+        <button class="modo-oscuro" aria-label="Cambiar a modo noche">Noche</button>
+        <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="inicio" class="hero">
+      <div class="hero-blob" aria-hidden="true"></div>
+      <div class="hero-texto">
+        <p class="hero-saludo">Hola, soy</p>
+        <h1>Edson Francisco Lino Aguirre Bravo</h1>
+        <p class="hero-desc">Técnico de sonido y estudiante de Ingeniería de Sistemas en la UAC. Quiero llegar a desarrollar como ingeniero, enfocado en hacer crecer mi propio negocio y los distintos tipos de proyectos a futuro.</p>
+        <a href="#proyectos" class="btn">Ver mis proyectos</a>
+      </div>
+      <img class="foto-perfil" src="assets/foto-perfil.jpeg" alt="Foto de Edson Francisco Lino Aguirre Bravo">
+    </section>
+
+    <section id="sobre-mi" class="reveal">
+      <h2>Sobre mí</h2>
+      <p>Soy representante de AeeS Acústico, un negocio familiar de soluciones acústicas y audiovisuales que fundamos en 2018: venta, alquiler, diseño acústico y mantenimiento de equipos de sonido, luces y pantallas LED. En paralelo a mis estudios de Ingeniería de Sistemas, vengo construyendo una app en Flutter y Firebase para digitalizar el alquiler de esos equipos.</p>
+    </section>
+
+    <section id="habilidades" class="reveal">
+      <h2>Habilidades</h2>
+
+      <div class="habilidades-grupo">
+        <h3>Audio &amp; Electrónica</h3>
+        <ul class="lista-habilidades">
+          <li>Sonido profesional</li>
+          <li>Pantallas LED</li>
+          <li>Luces robóticas</li>
+          <li>Reparación electrónica y eléctrica</li>
+          <li>Diseños acústicos</li>
+        </ul>
+      </div>
+
+      <div class="habilidades-grupo">
+        <h3>Desarrollo</h3>
+        <ul class="lista-habilidades">
+          <li>HTML5 &amp; CSS3</li>
+          <li>SQL (ES6+)</li>
+          <li>Flutter &amp; Dart</li>
+          <li>Python</li>
+          
+      </ul>
+      </div>
+    </section>
+
+    <section id="proyectos" class="reveal">
+      <h2>Proyectos</h2>
+      <p class="proyectos-intro">Se cargan dinámicamente desde JavaScript — mira <code>script.js</code>.</p>
+      <div class="grid-proyectos"></div>
+    </section>
+
+    <section id="contacto" class="reveal">
+      <h2>Contacto</h2>
+      <p>¿Quieres escribirme? Completa el formulario o revisa mi código en GitHub.</p>
+      <form>
+        <label for="nombre">Nombre</label>
+        <input id="nombre" type="text" placeholder="Tu nombre">
+
+        <label for="email">Correo</label>
+        <input id="email" type="email" placeholder="tu@correo.com">
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" placeholder="Escribe algo..."></textarea>
+
+        <button type="submit" class="btn">Enviar</button>
+      </form>
+      <div class="redes">
+        <a href="https://github.com/020200141d-coder" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:020200141d@uandina.edu.pe">Correo</a>
+        <a href="https://wa.me/51987166001" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Edson Francisco Lino Aguirre Bravo — Ingeniería de Sistemas, UAndina — hecho con HTML, CSS y JavaScript.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
