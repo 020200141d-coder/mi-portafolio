@@ -36,6 +36,10 @@ function leerDatos() {
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.disable('x-powered-by');
+// Variables que ven todas las vistas. `base` es el prefijo de rutas (css, js, img):
+// aquí es "/", y en la versión estática para GitHub Pages lo cambia scripts/build.js.
+app.locals.base = '/';
+app.locals.estatico = false;
 // Detrás de Render/Railway la IP real llega en X-Forwarded-For; la necesitamos
 // para el límite de mensajes por visitante en /api/contacto.
 app.set('trust proxy', 1);

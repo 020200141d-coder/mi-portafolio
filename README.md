@@ -35,9 +35,17 @@ Para usar fotos propias, colócalas en `public/img/` y cambia el campo `imagen` 
 
 Si no configuras el correo, los mensajes se guardan en `mensajes/mensajes.jsonl`, así que no se pierde ninguno.
 
-## Publicarlo en internet (gratis)
+## Verlo en GitHub Pages
 
-GitHub Pages solo sirve sitios estáticos y **no ejecuta Node.js**. Para publicarlo puedes usar [Render](https://render.com):
+El sitio se publica solo en **https://020200141d-coder.github.io/mi-portafolio/** cada vez que haces push a `main`, mediante el workflow `.github/workflows/pages.yml`.
+
+- **Configuración (una sola vez):** en el repo ve a **Settings → Pages → Source** y elige **GitHub Actions**.
+- **Probar la versión estática en tu PC:** ejecuta `npm run build`, que la genera en `dist/`.
+- **Formulario en Pages:** como Pages no tiene servidor, el formulario ofrece enviar el mensaje ya redactado por **WhatsApp** o por **correo**.
+
+## Publicarlo con servidor Node (opcional)
+
+Si quieres que el formulario envíe correos desde el servidor, publícalo en [Render](https://render.com):
 
 1. New → **Web Service** → conecta este repositorio.
 2. Build command: `npm install` · Start command: `npm start`

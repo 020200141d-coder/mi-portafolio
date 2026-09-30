@@ -753,7 +753,37 @@ function initFormulario() {
   const boton = $('button[type="submit"]', form);
   const contador = $('#contador');
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  // scripts/build.js marca el <body> con data-estatico en la versión para GitHub Pages.
+  const esEstatico = 'estatico' in document.body.dataset;
   let intentado = false;
+
+  const enviarSinServidor = async ({ nombre, email, mensaje }) => {
+    const texto = `Hola Edson, soy ${nombre} (${email}).\n\n${mensaje}`;
+    const r = await alerta({
+      icon: 'question',
+      title: '¿Por dónde lo envío?',
+      text: 'Tu mensaje ya está escrito, solo elige el canal.',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: '<i class="fa-brands fa-whatsapp"></i> WhatsApp',
+      denyButtonText: '<i class="fa-regular fa-envelope"></i> Correo',
+      cancelButtonText: 'Cancelar'
+    });
+    if (!r || r.isDismissed) return;
+
+    const numero = $('a[href^="https://wa.me"]').href.split('/').pop();
+    const correo = $('.copiar-email').dataset.email;
+    if (r.isConfirmed) {
+      window.open(`https://wa.me/${numero}?text=${encodeURIComponent(texto)}`, '_blank', 'noopener');
+    } else {
+      const asunto = encodeURIComponent(`Contacto desde el portafolio — ${nombre}`);
+      window.location.href = `mailto:${correo}?subject=${asunto}&body=${encodeURIComponent(texto)}`;
+    }
+    form.reset();
+    contador.textContent = '0';
+    intentado = false;
+    toast('success', `¡Listo, ${nombre.split(' ')[0]}! Solo falta que le des enviar.`);
+  };
 
   const reglas = {
     nombre: v => (v.length >= 2 ? '' : 'Escribe tu nombre.'),
@@ -801,8 +831,15 @@ function initFormulario() {
       return;
     }
 
-    boton.classList.add('cargando');
     const datos = Object.fromEntries(new FormData(form));
+
+    // En GitHub Pages no hay servidor: el mensaje sale por WhatsApp o por el correo del visitante.
+    if (esEstatico) {
+      await enviarSinServidor(datos);
+      return;
+    }
+
+    boton.classList.add('cargando');
 
     try {
       const res = await fetch('/api/contacto', {

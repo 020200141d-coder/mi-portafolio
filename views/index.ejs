@@ -10,7 +10,7 @@
   const totalSkills = d.habilidades.reduce((n, g) => n + g.items.length, 0);
 %>
 <%- include('partials/head', { d }) %>
-<body>
+<body<%= estatico ? " data-estatico" : "" %>>
 
 <%# Preloader: ecualizador que se oculta cuando carga la página. %>
 <div class="preloader" id="preloader" aria-hidden="true">
@@ -58,7 +58,7 @@
       <div class="hero-visual hero-anim-foto">
         <div class="foto-marco">
           <div class="foto-anillo" aria-hidden="true"></div>
-          <img src="<%= p.foto %>" alt="Foto de <%= p.nombre %>" class="foto-perfil" width="360" height="360">
+          <img src="<%= base %><%= p.foto %>" alt="Foto de <%= p.nombre %>" class="foto-perfil" width="360" height="360">
           <div class="foto-eq" aria-hidden="true">
             <% for (let i = 0; i < 16; i++) { %><i style="--i:<%= i %>"></i><% } %>
           </div>

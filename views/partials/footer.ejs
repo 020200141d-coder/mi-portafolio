@@ -1,7 +1,7 @@
 <%# footer.ejs — pie de página, botón "volver arriba" y scripts. %>
 <footer class="footer">
   <div class="contenedor footer-inner">
-    <a href="/#inicio" class="logo" data-scroll>
+    <a href="<%= base %>#inicio" class="logo" data-scroll>
       <span class="logo-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       <span><%= d.perfil.nombreCorto %><b>.</b><%= d.perfil.apellido %></span>
     </a>
@@ -22,6 +22,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="/js/main.js"></script>
+<script src="<%= base %>js/main.js"></script>
 </body>
 </html>
