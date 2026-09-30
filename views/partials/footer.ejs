@@ -1,0 +1,27 @@
+<%# footer.ejs — pie de página, botón "volver arriba" y scripts. %>
+<footer class="footer">
+  <div class="contenedor footer-inner">
+    <a href="/#inicio" class="logo" data-scroll>
+      <span class="logo-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span><%= d.perfil.nombreCorto %><b>.</b><%= d.perfil.apellido %></span>
+    </a>
+    <p>&copy; <%= new Date().getFullYear() %> <%= d.perfil.nombre %> — Ingeniería de Sistemas, UAndina.</p>
+    <p class="footer-stack"><i class="fa-brands fa-node-js"></i> Hecho con Node.js, Express y EJS</p>
+  </div>
+</footer>
+
+<%# Botón volver arriba: el anillo SVG se llena según el avance del scroll. %>
+<button class="volver-arriba" id="volver-arriba" aria-label="Volver arriba">
+  <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" /></svg>
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<div class="cursor-punto" aria-hidden="true"></div>
+<div class="cursor-anillo" aria-hidden="true"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

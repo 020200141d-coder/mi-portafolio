@@ -1,0 +1,149 @@
+{
+  "perfil": {
+    "nombre": "Edson Francisco Lino Aguirre Bravo",
+    "nombreCorto": "Edson",
+    "apellido": "Aguirre",
+    "roles": [
+      "Técnico de sonido",
+      "Estudiante de Ingeniería de Sistemas",
+      "Desarrollador Flutter",
+      "Representante de AeeS Acústico"
+    ],
+    "descripcion": "Técnico de sonido y estudiante de Ingeniería de Sistemas en la Universidad Andina del Cusco. Uno el audio profesional con el software para hacer crecer mi propio negocio y los proyectos que vienen.",
+    "sobreMi": [
+      "Soy representante de AeeS Acústico, un negocio familiar de soluciones acústicas y audiovisuales que fundamos en 2018: venta, alquiler, diseño acústico y mantenimiento de equipos de sonido, luces y pantallas LED.",
+      "En paralelo a mis estudios de Ingeniería de Sistemas, vengo construyendo una app en Flutter y Firebase para digitalizar el alquiler de esos equipos. Me gusta estar en los dos lados: montando el escenario y escribiendo el código."
+    ],
+    "fichas": [
+      { "icono": "fa-solid fa-graduation-cap", "titulo": "Estudios", "valor": "Ingeniería de Sistemas — UAndina" },
+      { "icono": "fa-solid fa-building", "titulo": "Negocio", "valor": "AeeS Acústico (desde 2018)" },
+      { "icono": "fa-solid fa-sliders", "titulo": "Enfoque", "valor": "Audio, pantallas LED y software" }
+    ],
+    "anioFundacion": 2018,
+    "email": "020200141d@uandina.edu.pe",
+    "github": "https://github.com/020200141d-coder",
+    "whatsapp": "51987166001",
+    "foto": "/img/foto-perfil.jpeg"
+  },
+
+  "servicios": [
+    { "icono": "fa-solid fa-cart-shopping", "titulo": "Venta de equipos", "desc": "Asesoría y venta de equipos de sonido, iluminación y pantallas LED según el tipo de evento o local." },
+    { "icono": "fa-solid fa-truck-ramp-box", "titulo": "Alquiler de equipos", "desc": "Sonido, luces y pantallas para eventos, con montaje y operación técnica incluidos." },
+    { "icono": "fa-solid fa-wave-square", "titulo": "Diseño acústico", "desc": "Estudio del espacio y distribución de equipos para que el sonido llegue claro a todo el público." },
+    { "icono": "fa-solid fa-screwdriver-wrench", "titulo": "Mantenimiento", "desc": "Reparación electrónica y eléctrica de consolas, amplificadores, parlantes y luces." },
+    { "icono": "fa-solid fa-tv", "titulo": "Pantallas LED", "desc": "Instalación y operación de pantallas LED de gran formato para escenarios y ferias." },
+    { "icono": "fa-solid fa-lightbulb", "titulo": "Iluminación robótica", "desc": "Programación de luces robóticas para shows en vivo y eventos corporativos." }
+  ],
+
+  "habilidades": [
+    {
+      "id": "audio",
+      "titulo": "Audio & Electrónica",
+      "icono": "fa-solid fa-sliders",
+      "items": [
+        { "nombre": "Sonido profesional", "nivel": 95, "icono": "fa-solid fa-volume-high" },
+        { "nombre": "Pantallas LED", "nivel": 90, "icono": "fa-solid fa-tv" },
+        { "nombre": "Luces robóticas", "nivel": 85, "icono": "fa-solid fa-lightbulb" },
+        { "nombre": "Reparación electrónica y eléctrica", "nivel": 85, "icono": "fa-solid fa-microchip" },
+        { "nombre": "Diseños acústicos", "nivel": 88, "icono": "fa-solid fa-wave-square" }
+      ]
+    },
+    {
+      "id": "desarrollo",
+      "titulo": "Desarrollo",
+      "icono": "fa-solid fa-code",
+      "items": [
+        { "nombre": "Flutter & Dart", "nivel": 75, "icono": "fa-solid fa-mobile-screen" },
+        { "nombre": "Firebase", "nivel": 70, "icono": "fa-solid fa-fire" },
+        { "nombre": "HTML5 & CSS3", "nivel": 85, "icono": "fa-brands fa-html5" },
+        { "nombre": "JavaScript (ES6+)", "nivel": 75, "icono": "fa-brands fa-js" },
+        { "nombre": "Node.js & Express", "nivel": 60, "icono": "fa-brands fa-node-js" },
+        { "nombre": "SQL", "nivel": 70, "icono": "fa-solid fa-database" },
+        { "nombre": "Python", "nivel": 60, "icono": "fa-brands fa-python" }
+      ]
+    }
+  ],
+
+  "filtros": [
+    { "id": "todos", "label": "Todos" },
+    { "id": "sonido", "label": "Sonido" },
+    { "id": "led", "label": "Pantallas LED" },
+    { "id": "acustica", "label": "Diseño acústico" },
+    { "id": "software", "label": "Software" }
+  ],
+
+  "trabajos": [
+    {
+      "id": "app-aees",
+      "titulo": "AeeS Acústico — App",
+      "categoria": "software",
+      "categoriaLabel": "Software",
+      "icono": "fa-solid fa-mobile-screen-button",
+      "imagen": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=900&q=70",
+      "tech": ["Flutter", "Dart", "Firebase"],
+      "resumen": "App para digitalizar el alquiler de equipos de audio, luces y pantallas LED de mi negocio.",
+      "detalle": "Aplicación móvil con roles de administrador, operaciones y cliente. Incluye catálogo de equipos y combos, reservas, inventario, generación de documentos PDF, cámara para registrar el estado de los equipos y ubicación del evento.",
+      "puntos": ["Roles: admin, operaciones y cliente", "Reservas e inventario en tiempo real con Firebase", "Combos de equipos y reportes en PDF"]
+    },
+    {
+      "id": "tecnicentro",
+      "titulo": "Tecnicentro Flores",
+      "categoria": "software",
+      "categoriaLabel": "Software",
+      "icono": "fa-solid fa-store",
+      "imagen": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=70",
+      "tech": ["Comercio tecnológico", "Electricidad industrial", "Audiovisuales"],
+      "resumen": "Aplicación de comercio tecnológico para una tienda de electrónica.",
+      "detalle": "Aplicación para la venta de equipos y la oferta de servicios de electricidad industrial y audiovisuales de una tienda de electrónica.",
+      "puntos": ["Catálogo de equipos electrónicos", "Servicios de electricidad industrial", "Línea audiovisual"]
+    },
+    {
+      "id": "ollantaytambo",
+      "titulo": "Pantalla LED 8×4 m — Ollantaytambo",
+      "categoria": "led",
+      "categoriaLabel": "Pantallas LED",
+      "icono": "fa-solid fa-tv",
+      "imagen": "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=900&q=70",
+      "tech": ["Pantalla LED", "Estructura", "Operación en vivo"],
+      "resumen": "Instalación de una pantalla LED de 8×4 metros en Ollantaytambo.",
+      "detalle": "Montaje, configuración y operación de una pantalla LED de gran formato (8×4 m) para un evento en Ollantaytambo, Cusco.",
+      "puntos": ["32 m² de pantalla LED", "Montaje de estructura", "Operación de contenido en vivo"]
+    },
+    {
+      "id": "feria-justicia",
+      "titulo": "Feria de la Justicia — Cusco",
+      "categoria": "sonido",
+      "categoriaLabel": "Sonido",
+      "icono": "fa-solid fa-scale-balanced",
+      "imagen": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=900&q=70",
+      "tech": ["Sonido en exteriores", "Microfonía", "Operación técnica"],
+      "resumen": "Sonido para la Feria de la Justicia de la Corte Suprema del Cusco.",
+      "detalle": "Cobertura de sonido para la Feria de la Justicia organizada en Cusco: microfonía para ponentes, refuerzo sonoro para el público y operación técnica durante todo el evento.",
+      "puntos": ["Refuerzo sonoro para el público", "Microfonía para ponentes", "Operación técnica en vivo"]
+    },
+    {
+      "id": "sullana",
+      "titulo": "Capacitaciones — Corte Superior de Sullana",
+      "categoria": "sonido",
+      "categoriaLabel": "Sonido",
+      "icono": "fa-solid fa-microphone-lines",
+      "imagen": "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=900&q=70",
+      "tech": ["Audio para conferencias", "Microfonía", "Soporte técnico"],
+      "resumen": "Soporte de audio para capacitaciones con la Corte Superior de Sullana.",
+      "detalle": "Equipamiento y soporte de audio para jornadas de capacitación con la Corte Superior de Sullana.",
+      "puntos": ["Audio para auditorios", "Microfonía inalámbrica", "Soporte técnico durante las jornadas"]
+    },
+    {
+      "id": "diseno-acustico",
+      "titulo": "Diseño acústico para espectáculos en vivo",
+      "categoria": "acustica",
+      "categoriaLabel": "Diseño acústico",
+      "icono": "fa-solid fa-wave-square",
+      "imagen": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=900&q=70",
+      "tech": ["Diseño acústico", "Sistemas de PA", "Iluminación"],
+      "resumen": "Diseño acústico y montaje de sonido para espectáculos en vivo.",
+      "detalle": "Estudio del espacio, distribución de parlantes y ajuste del sistema para espectáculos en vivo, junto con iluminación robótica y pantallas.",
+      "puntos": ["Distribución de sistemas de PA", "Ajuste y ecualización del recinto", "Integración con luces y pantallas"]
+    }
+  ]
+}

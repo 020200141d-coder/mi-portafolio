@@ -1,0 +1,21 @@
+{
+  "name": "mi-portafolio",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Portafolio de Edson Aguirre — Node.js + Express + EJS",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=20.12"
+  },
+  "author": "Edson Francisco Lino Aguirre Bravo",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "nodemailer": "^10.0.12"
+  }
+}

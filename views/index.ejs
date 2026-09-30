@@ -1,0 +1,338 @@
+<%#
+  index.ejs — página principal.
+  Todo el contenido sale de data/portafolio.json (variable `d`), así que para agregar
+  un trabajo, servicio o habilidad solo se edita el JSON, no este archivo.
+  Los atributos data-* son los "ganchos" que usa public/js/main.js para las animaciones.
+%>
+<%
+  const p = d.perfil;
+  const anios = anioActual - p.anioFundacion;
+  const totalSkills = d.habilidades.reduce((n, g) => n + g.items.length, 0);
+%>
+<%- include('partials/head', { d }) %>
+<body>
+
+<%# Preloader: ecualizador que se oculta cuando carga la página. %>
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader-eq"><i></i><i></i><i></i><i></i><i></i></div>
+  <span>Probando sonido…</span>
+</div>
+
+<%- include('partials/header', { d }) %>
+
+<main>
+
+  <!-- ================= HERO ================= -->
+  <section id="inicio" class="hero">
+    <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-glow" aria-hidden="true"></div>
+
+    <div class="contenedor hero-contenido">
+      <div class="hero-texto">
+        <span class="etiqueta hero-anim"><span class="punto-vivo"></span> AeeS Acústico · desde <%= p.anioFundacion %></span>
+        <h1 class="hero-anim">
+          <span class="h1-sub">Hola, soy</span>
+          <%= p.nombreCorto %> <span class="texto-acento"><%= p.apellido %></span>
+        </h1>
+        <p class="hero-rol hero-anim" aria-label="<%= p.roles.join(', ') %>">
+          <span class="prompt">&gt;_</span>
+          <span id="typed" data-roles="<%= JSON.stringify(p.roles) %>"></span><span class="caret"></span>
+        </p>
+        <p class="hero-desc hero-anim"><%= p.descripcion %></p>
+        <div class="hero-acciones hero-anim">
+          <a href="#trabajos" class="btn btn-primario magnetico" data-scroll>
+            Ver trabajos <i class="fa-solid fa-arrow-down"></i>
+          </a>
+          <a href="#contacto" class="btn btn-ghost magnetico" data-scroll>
+            <i class="fa-regular fa-paper-plane"></i> Hablemos
+          </a>
+        </div>
+        <div class="hero-redes hero-anim">
+          <a href="<%= p.github %>" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://wa.me/<%= p.whatsapp %>" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <button type="button" class="copiar-email" data-email="<%= p.email %>" aria-label="Copiar correo"><i class="fa-regular fa-envelope"></i></button>
+        </div>
+      </div>
+
+      <div class="hero-visual hero-anim-foto">
+        <div class="foto-marco">
+          <div class="foto-anillo" aria-hidden="true"></div>
+          <img src="<%= p.foto %>" alt="Foto de <%= p.nombre %>" class="foto-perfil" width="360" height="360">
+          <div class="foto-eq" aria-hidden="true">
+            <% for (let i = 0; i < 16; i++) { %><i style="--i:<%= i %>"></i><% } %>
+          </div>
+        </div>
+        <span class="chip-flotante chip-1"><i class="fa-solid fa-volume-high"></i> Audio Pro</span>
+        <span class="chip-flotante chip-2"><i class="fa-solid fa-tv"></i> LED 8×4 m</span>
+        <span class="chip-flotante chip-3"><i class="fa-solid fa-mobile-screen"></i> Flutter</span>
+      </div>
+    </div>
+
+    <a href="#stats" class="scroll-indicador" data-scroll aria-label="Bajar">
+      <span class="mouse"><span></span></span>
+      <small>Scroll</small>
+    </a>
+  </section>
+
+  <!-- ================= STATS ================= -->
+  <section id="stats" class="stats">
+    <div class="contenedor stats-grid" data-stagger>
+      <div class="stat" data-reveal>
+        <strong data-contador="<%= p.anioFundacion %>" data-desde="<%= p.anioFundacion - 30 %>">0</strong>
+        <span>Año en que fundamos AeeS</span>
+      </div>
+      <div class="stat" data-reveal>
+        <strong data-contador="<%= anios %>" data-prefijo="+">0</strong>
+        <span>Años en audio profesional</span>
+      </div>
+      <div class="stat" data-reveal>
+        <strong data-contador="<%= d.trabajos.length %>">0</strong>
+        <span>Trabajos destacados</span>
+      </div>
+      <div class="stat" data-reveal>
+        <strong data-contador="<%= totalSkills %>">0</strong>
+        <span>Habilidades técnicas</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SOBRE MÍ ================= -->
+  <section id="sobre-mi" class="seccion">
+    <div class="contenedor">
+      <header class="seccion-titulo" data-reveal>
+        <span class="seccion-num">01</span>
+        <h2>Sobre mí</h2>
+        <p>Del escenario al código.</p>
+      </header>
+
+      <div class="sobre-grid">
+        <div class="sobre-texto" data-reveal>
+          <% p.sobreMi.forEach(parrafo => { %><p><%= parrafo %></p><% }) %>
+          <div class="sobre-acciones">
+            <a href="#servicios" class="btn btn-ghost btn-sm magnetico" data-scroll>Qué hacemos <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#habilidades" class="btn btn-link" data-scroll>Mis habilidades <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <%# Panel tipo "consola de mezcla": las fichas son canales con su fader. %>
+        <aside class="panel-consola tilt" data-reveal>
+          <div class="consola-cabecera">
+            <span class="leds"><i></i><i></i><i></i></span>
+            <span class="consola-titulo">perfil.json</span>
+          </div>
+          <ul class="consola-fichas">
+            <% p.fichas.forEach((f, i) => { %>
+              <li style="--d:<%= i %>">
+                <span class="ficha-icono"><i class="<%= f.icono %>"></i></span>
+                <div>
+                  <small><%= f.titulo %></small>
+                  <strong><%= f.valor %></strong>
+                </div>
+              </li>
+            <% }) %>
+          </ul>
+          <div class="consola-faders" aria-hidden="true">
+            <% for (let i = 0; i < 8; i++) { %><span style="--i:<%= i %>"><i></i></span><% } %>
+          </div>
+          <div class="brillo" aria-hidden="true"></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICIOS (carrusel) ================= -->
+  <section id="servicios" class="seccion seccion-alt">
+    <div class="contenedor">
+      <header class="seccion-titulo seccion-titulo-flex" data-reveal>
+        <div>
+          <span class="seccion-num">02</span>
+          <h2>Servicios</h2>
+          <p>Lo que hacemos en AeeS Acústico.</p>
+        </div>
+        <div class="carrusel-controles">
+          <button class="btn-icono btn-carrusel" data-carrusel-prev aria-label="Anterior"><i class="fa-solid fa-arrow-left"></i></button>
+          <button class="btn-icono btn-carrusel" data-carrusel-next aria-label="Siguiente"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </header>
+
+      <div class="carrusel" id="carrusel" data-reveal>
+        <div class="carrusel-pista">
+          <% d.servicios.forEach((s, i) => { %>
+            <article class="servicio-card tilt">
+              <span class="servicio-num"><%= String(i + 1).padStart(2, '0') %></span>
+              <span class="servicio-icono"><i class="<%= s.icono %>"></i></span>
+              <h3><%= s.titulo %></h3>
+              <p><%= s.desc %></p>
+              <a href="#contacto" class="servicio-link" data-scroll data-servicio="<%= s.titulo %>">Cotizar <i class="fa-solid fa-arrow-right"></i></a>
+              <div class="brillo" aria-hidden="true"></div>
+            </article>
+          <% }) %>
+        </div>
+      </div>
+      <div class="carrusel-puntos" id="carrusel-puntos" role="tablist" aria-label="Páginas de servicios"></div>
+    </div>
+  </section>
+
+  <!-- ================= HABILIDADES (tabs) ================= -->
+  <section id="habilidades" class="seccion">
+    <div class="contenedor">
+      <header class="seccion-titulo" data-reveal>
+        <span class="seccion-num">03</span>
+        <h2>Habilidades</h2>
+        <p>Dos mundos, un mismo nivel de detalle.</p>
+      </header>
+
+      <div class="tabs" data-reveal>
+        <div class="tabs-lista" role="tablist">
+          <% d.habilidades.forEach((g, i) => { %>
+            <button role="tab" class="tab <%= i === 0 ? 'activo' : '' %>" id="tab-<%= g.id %>"
+                    aria-selected="<%= i === 0 %>" aria-controls="panel-<%= g.id %>" data-tab="<%= g.id %>">
+              <i class="<%= g.icono %>"></i> <%= g.titulo %>
+            </button>
+          <% }) %>
+          <span class="tabs-indicador" aria-hidden="true"></span>
+        </div>
+
+        <div class="tabs-paneles">
+          <% d.habilidades.forEach((g, i) => { %>
+            <div role="tabpanel" class="tab-panel <%= i === 0 ? 'activo' : '' %>" id="panel-<%= g.id %>"
+                 aria-labelledby="tab-<%= g.id %>" <%= i === 0 ? '' : 'hidden' %>>
+              <% g.items.forEach((h, j) => { %>
+                <div class="skill" style="--d:<%= j %>">
+                  <div class="skill-cabecera">
+                    <span><i class="<%= h.icono %>"></i> <%= h.nombre %></span>
+                    <b data-nivel="<%= h.nivel %>">0%</b>
+                  </div>
+                  <div class="skill-barra"><span style="--nivel:<%= h.nivel %>%"></span></div>
+                </div>
+              <% }) %>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRABAJOS (filtros + modal) ================= -->
+  <section id="trabajos" class="seccion seccion-alt">
+    <div class="contenedor">
+      <header class="seccion-titulo" data-reveal>
+        <span class="seccion-num">04</span>
+        <h2>Trabajos</h2>
+        <p>Proyectos de software y trabajo de campo real.</p>
+      </header>
+
+      <div class="filtros" role="toolbar" aria-label="Filtrar trabajos" data-reveal>
+        <% d.filtros.forEach((f, i) => { %>
+          <button class="filtro <%= i === 0 ? 'activo' : '' %>" data-filtro="<%= f.id %>" aria-pressed="<%= i === 0 %>">
+            <%= f.label %>
+            <small><%= f.id === 'todos' ? d.trabajos.length : d.trabajos.filter(t => t.categoria === f.id).length %></small>
+          </button>
+        <% }) %>
+        <span class="filtros-indicador" aria-hidden="true"></span>
+      </div>
+
+      <div class="grid-trabajos" id="grid-trabajos" data-stagger>
+        <% d.trabajos.forEach(t => { %>
+          <article class="trabajo-card tilt" data-categoria="<%= t.categoria %>" data-reveal>
+            <button class="trabajo-abrir" data-trabajo="<%= t.id %>" aria-label="Ver detalle de <%= t.titulo %>"></button>
+            <div class="trabajo-imagen">
+              <img src="<%= t.imagen %>" alt="" loading="lazy" onerror="this.remove()">
+              <span class="trabajo-cat"><i class="<%= t.icono %>"></i> <%= t.categoriaLabel %></span>
+            </div>
+            <div class="trabajo-cuerpo">
+              <h3><%= t.titulo %></h3>
+              <p><%= t.resumen %></p>
+              <ul class="tags"><% t.tech.forEach(x => { %><li><%= x %></li><% }) %></ul>
+              <span class="trabajo-mas">Ver detalle <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+            <div class="brillo" aria-hidden="true"></div>
+          </article>
+        <% }) %>
+      </div>
+      <p class="sin-resultados" id="sin-resultados" hidden>No hay trabajos en esta categoría todavía.</p>
+    </div>
+
+    <%# Los datos de cada trabajo viajan al front como JSON para rellenar el modal sin otra petición. %>
+    <script type="application/json" id="datos-trabajos"><%- JSON.stringify(d.trabajos).replace(/</g, '\\u003c') %></script>
+  </section>
+
+  <!-- ================= CONTACTO ================= -->
+  <section id="contacto" class="seccion">
+    <div class="contenedor">
+      <header class="seccion-titulo" data-reveal>
+        <span class="seccion-num">05</span>
+        <h2>Contacto</h2>
+        <p>¿Tienes un evento o un proyecto? Hablemos.</p>
+      </header>
+
+      <div class="contacto-grid">
+        <div class="contacto-info" data-stagger>
+          <a class="contacto-card tilt" href="https://wa.me/<%= p.whatsapp %>" target="_blank" rel="noopener" data-reveal>
+            <span class="contacto-icono wa"><i class="fa-brands fa-whatsapp"></i></span>
+            <div><small>WhatsApp</small><strong>+<%= p.whatsapp.replace(/^(\d{2})(\d{3})(\d{3})(\d{3})$/, '$1 $2 $3 $4') %></strong></div>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <button type="button" class="contacto-card tilt copiar-email" data-email="<%= p.email %>" data-reveal>
+            <span class="contacto-icono"><i class="fa-regular fa-envelope"></i></span>
+            <div><small>Correo · clic para copiar</small><strong><%= p.email %></strong></div>
+            <i class="fa-regular fa-copy"></i>
+          </button>
+          <a class="contacto-card tilt" href="<%= p.github %>" target="_blank" rel="noopener" data-reveal>
+            <span class="contacto-icono gh"><i class="fa-brands fa-github"></i></span>
+            <div><small>GitHub</small><strong><%= p.github.replace('https://github.com/', '@') %></strong></div>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+
+        <form class="form-contacto" id="form-contacto" novalidate data-reveal>
+          <div class="campo">
+            <input id="nombre" name="nombre" type="text" placeholder=" " autocomplete="name" maxlength="80" required>
+            <label for="nombre">Nombre</label>
+            <small class="campo-error"></small>
+          </div>
+          <div class="campo">
+            <input id="email" name="email" type="email" placeholder=" " autocomplete="email" maxlength="150" required>
+            <label for="email">Correo</label>
+            <small class="campo-error"></small>
+          </div>
+          <div class="campo">
+            <textarea id="mensaje" name="mensaje" rows="5" placeholder=" " maxlength="3000" required></textarea>
+            <label for="mensaje">Mensaje</label>
+            <small class="campo-error"></small>
+            <span class="contador-caracteres"><span id="contador">0</span>/3000</span>
+          </div>
+          <%# Honeypot: invisible para personas; si un bot lo llena, el servidor descarta el envío. %>
+          <input type="text" name="web" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" class="btn btn-primario btn-bloque magnetico">
+            <span class="btn-texto"><i class="fa-regular fa-paper-plane"></i> Enviar mensaje</span>
+            <span class="btn-cargando"><i class="fa-solid fa-circle-notch fa-spin"></i> Enviando…</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<%# Modal de detalle de trabajo (se rellena desde main.js). %>
+<dialog class="modal" id="modal-trabajo" aria-labelledby="modal-titulo">
+  <div class="modal-contenido">
+    <button class="modal-cerrar btn-icono" data-cerrar-modal aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-imagen"><img src="" alt="" id="modal-img"><span class="trabajo-cat" id="modal-cat"></span></div>
+    <div class="modal-cuerpo">
+      <h3 id="modal-titulo"></h3>
+      <p id="modal-detalle"></p>
+      <ul class="modal-puntos" id="modal-puntos"></ul>
+      <ul class="tags" id="modal-tags"></ul>
+      <div class="modal-nav">
+        <button class="btn btn-ghost btn-sm" data-modal-nav="-1"><i class="fa-solid fa-arrow-left"></i> Anterior</button>
+        <a href="#contacto" class="btn btn-primario btn-sm" data-cerrar-modal data-scroll>Quiero algo así</a>
+        <button class="btn btn-ghost btn-sm" data-modal-nav="1">Siguiente <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<%- include('partials/footer', { d }) %>
